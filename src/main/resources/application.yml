@@ -1,0 +1,21 @@
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${MESSAGE_DB_HOST:localhost}:5432/Co2ding
+    username: postgres
+    password: ????????
+  jpa:
+    open-in-view: false
+
+springdoc:
+  show-actuator: true
+
+management:
+  endpoint:
+    health:
+      show-details: always
