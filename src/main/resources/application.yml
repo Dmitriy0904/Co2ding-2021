@@ -5,10 +5,10 @@ server:
 
 spring:
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://${MESSAGE_DB_HOST:localhost}:5432/Co2ding
-    username: postgres
-    password: ????????
+    driver-class-name: ${DB_URL_CLASS_NAME}
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
   jpa:
     open-in-view: false
 
