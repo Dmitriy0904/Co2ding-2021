@@ -19,6 +19,7 @@
 		<java.version>16</java.version>
 		<springdoc-openapi.version>1.5.9</springdoc-openapi.version>
 		<java-jwt.version>3.18.1</java-jwt.version>
+		<spring-boot-maven-plugin>2.4.1</spring-boot-maven-plugin>
 	</properties>
 
 	<dependencies>
@@ -42,10 +43,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency>
+	<!--	<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
-		</dependency>
+		</dependency>-->
 
 		<dependency>
 			<groupId>com.auth0</groupId>
@@ -63,9 +64,15 @@
 			<version>${springdoc-openapi.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.26</version>
+			<scope>runtime</scope>
+		</dependency>
+		<!--<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
-		</dependency>
+		</dependency>-->
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
@@ -81,6 +88,11 @@
 			<artifactId>java-jwt</artifactId>
 			<version>${java-jwt.version}</version>
 		</dependency>
+		<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-test</artifactId>
+		<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -88,6 +100,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring-boot-maven-plugin}</version>
 			</plugin>
 			<plugin>
 				<groupId>org.springdoc</groupId>
@@ -96,5 +109,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
