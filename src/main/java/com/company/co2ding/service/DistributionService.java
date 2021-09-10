@@ -8,7 +8,6 @@ import com.company.co2ding.model.Result;
 import com.company.co2ding.repository.DataTypeRepository;
 import com.company.co2ding.repository.RegionRepository;
 import com.company.co2ding.repository.ResultRepository;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

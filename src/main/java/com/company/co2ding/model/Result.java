@@ -15,10 +15,10 @@ public class Result {
 
     private Double value;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private DataType dataType;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Region region;
 
     public Long getId() {

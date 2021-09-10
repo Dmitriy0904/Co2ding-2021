@@ -1,6 +1,7 @@
 package com.company.co2ding.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="datatypes")
@@ -12,6 +13,17 @@ public class DataType {
     private String name;
 
     private String units;
+
+    @OneToMany(mappedBy = "dataType")
+    private List<Result> results;
+
+    public List<Result> getResults() {
+        return results;
+    }
+
+    public void setResults(List<Result> results) {
+        this.results = results;
+    }
 
     public Long getId() {
         return id;

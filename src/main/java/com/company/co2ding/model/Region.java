@@ -1,6 +1,7 @@
 package com.company.co2ding.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="regions")
@@ -10,6 +11,9 @@ public class Region {
     private Long id;
 
     private String name;
+
+    @OneToMany(mappedBy = "region")
+    private List<Result> resuls;
 
     public Long getId() {
         return id;

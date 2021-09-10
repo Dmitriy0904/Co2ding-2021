@@ -2,15 +2,15 @@ server:
   error:
     include-message: always
     include-binding-errors: always
-
 spring:
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:db
-    username: sa
-    password: sa
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASS}
   jpa:
     open-in-view: false
+    hibernate:
+      ddl-auto: create
 
 springdoc:
   show-actuator: true
