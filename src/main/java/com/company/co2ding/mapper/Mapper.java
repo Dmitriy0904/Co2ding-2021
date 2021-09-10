@@ -9,10 +9,7 @@ import com.company.co2ding.repository.RegionRepository;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Component
 public class Mapper {
@@ -26,7 +23,7 @@ public class Mapper {
     }
 
     public List<Region> mapRegions(){
-        Set<String> cityNames = new HashSet<>();
+        Set<String> cityNames = new LinkedHashSet<>();
         statistics.forEach(s -> cityNames.add(s.getRegion()));
 
         List<Region> regions = new ArrayList<>();
