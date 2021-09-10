@@ -1,6 +1,9 @@
 package com.company.co2ding.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="regions")
@@ -10,6 +13,10 @@ public class Region {
     private Long id;
 
     private String name;
+
+    @OneToMany(mappedBy = "region")
+    @JsonIgnore
+    private List<Result> resuls;
 
     public Long getId() {
         return id;
