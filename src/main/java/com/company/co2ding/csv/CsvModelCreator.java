@@ -27,20 +27,14 @@ public class CsvModelCreator {
             Field[] objectFields = objectClass.getDeclaredFields();
 
 
-<<<<<<< HEAD:src/main/java/com/company/co2ding/csv/CsvModelCreator.java
-            for(Field field : objectFields){
-                if(field.isAnnotationPresent(CsvMapped.class)){
-=======
             for (Field field : objectFields) {
-                if (field.isAnnotationPresent(Mapped.class)) {
->>>>>>> c1f7fa29e102e3470aa1117475b7bbfb8563748e:src/main/java/com/company/co2ding/csv/ModelCreator.java
+                if (field.isAnnotationPresent(CsvMapped.class)) {
                     field.setAccessible(true);
                     CsvMapped fieldAnnotation = field.getAnnotation(CsvMapped.class);
                     String annotationValue = csvValues.get(fieldAnnotation.value());
                     parser.parseField(newObject, field, annotationValue);
                 }
             }
-
         } catch (NoSuchMethodException exception) {
             log.error("NoSuchMethodException in method create object");
             throw new RuntimeException(exception);
@@ -55,7 +49,7 @@ public class CsvModelCreator {
             throw new RuntimeException(exception);
         }
 
-        log.info("Object {} was created successfully", newObject.toString());
+        log.info("Object {} was created successfully", newObject);
         return newObject;
     }
 }

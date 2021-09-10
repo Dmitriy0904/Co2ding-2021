@@ -1,0 +1,173 @@
+openapi: 3.0.3
+info:
+  title: co2ding API spec
+  description: co2ding API for retrieving data provided by back-end
+  version: 1.0.0
+servers:
+  - url: 'https://co2ding-2021.herokuapp.com/api/v1'
+    description: "co2ding API"
+  - url: 'http://localhost:8000/api/v1'
+    description: Localhost
+paths:
+  /distribution/regions:
+    get:
+      summary: Get available regions
+      responses:
+        200:
+          $ref: "#/components/responses/RegionsResponse"
+  /distribution/dataTypes:
+    get:
+      summary: Get available data types
+      responses:
+        200:
+          $ref: "#/components/responses/DataTypesResponse"
+  /distribution/summary:
+    get:
+      parameters:
+        - $ref: "#/components/parameters/year"
+        - $ref: "#/components/parameters/region"
+        - $ref: "#/components/parameters/dataType"
+      summary: Get distribution information
+      responses:
+        200:
+          $ref: "#/components/responses/DistributionResponse"
+components:
+  parameters:
+    year:
+      name: year
+      in: query
+      required: true
+      schema:
+        type: integer
+        format: "4-digit year"
+        example: 2019
+    region:
+      name: region
+      in: query
+      required: true
+      schema:
+        type: integer
+        example: 1
+    dataType:
+      name: dataType
+      in: query
+      required: true
+      schema:
+        type: integer
+        example: 1
+  responses:
+    RegionsResponse:
+      description: "Available regions"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Regions"
+          examples:
+            "Single region":
+              value:
+                results:
+                  - id: 1
+                    name: "Вінницька"
+            "Multiple regions":
+              value:
+                results:
+                  - id: 1
+                    name: "Вінницька"
+                  - id: 2
+                    name: "Полтавська"
+                  - id: 3
+                    name: "Чернігівська"
+    DataTypesResponse:
+      description: "Available data types"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/DataTypes"
+          examples:
+            "Simgle data type":
+              value:
+                results:
+                  - id: 1
+                    name: CO2
+                    units: lbs
+            "Multiple data types":
+              value:
+                results:
+                  - id: 1
+                    name: CO2
+                    units: lbs
+                  - id: 2
+                    name: trees
+                    units: pcs
+    DistributionResponse:
+      description: "Distribution"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Distribution"
+          example:
+            region:
+              id: 1
+              name: "Чернігівська"
+            dataType:
+              id: 1
+              name: CO2
+              units: lbs
+            results:
+              - dateStart: "2021-01-01"
+                value: 150535.5
+              - dateStart: "2021-02-01"
+                value: 175023.1
+              - dateStart: "2021-03-01"
+                value: 127458.9
+  schemas:
+    Distribution:
+      type: object
+      properties:
+        region:
+          $ref: "#/components/schemas/Region"
+        dataType:
+          $ref: "#/components/schemas/DataType"
+        results:
+          items:
+            $ref: "#/components/schemas/DistributionItem"
+    DistributionItem:
+      type: object
+      properties:
+        dateStart:
+          type: string
+          format: "ISO-8601: YYYY-MM-DD"
+        value:
+          type: number
+    DataTypes:
+      type: object
+      properties:
+        results:
+          items:
+            $ref: "#/components/schemas/DataType"
+    DataType:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        units:
+          type: string
+          enum:
+            - lbs
+            - pcs
+            - kWh
+    Regions:
+      type: object
+      properties:
+        results:
+          items:
+            $ref: "#/components/schemas/Region"
+    Region:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
