@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -33,6 +34,7 @@ public class DistributionService {
         this.dataTypeRepository = dataTypeRepository;
     }
 
+
     public List<Region> getAllRegions(){
         return regionRepository.findAll();
     }
@@ -43,7 +45,8 @@ public class DistributionService {
         DataType dataType = dataTypeRepository.getById(dataTypeId);
         Date start = Date.valueOf(year+"-01-01");
         Date end = Date.valueOf(year+"-12-31");
-        List<Result> results = resultRepository.findByRegion_IdAndDateStartIsGreaterThanEqualAndDateStartIsLessThanEqualAndDataType_Id(regionId, start, end, dataTypeId)    ;
+        List<Result> results = new ArrayList<>();
+//        List<Result> results = resultRepository.findByRegion_IdAndDateStartIsGreaterThanEqualAndDateStartIsLessThanEqualAndDataType_Id(regionId, start, end, dataTypeId)    ;
         return new Distribution(new RegionDTO(region.getId(), region.getName()),new DataTypeDTO(dataType.getId(), dataType.getName()), ResultDTO.fromResults(results));
     }
 }
