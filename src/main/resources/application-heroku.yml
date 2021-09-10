@@ -1,0 +1,19 @@
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
+spring:
+  datasource:
+    url: ${DATABASE_URL}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create
+
+springdoc:
+  show-actuator: true
+
+management:
+  endpoint:
+    health:
+      show-details: always
