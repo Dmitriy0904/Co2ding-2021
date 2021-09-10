@@ -1,12 +1,10 @@
 package com.company.co2ding.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="datatypes")
+@Table(name = "datatypes")
 public class DataType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +15,6 @@ public class DataType {
     private String units;
 
     @OneToMany(mappedBy = "dataType")
-    @JsonIgnore
     private List<Result> results;
 
     public List<Result> getResults() {

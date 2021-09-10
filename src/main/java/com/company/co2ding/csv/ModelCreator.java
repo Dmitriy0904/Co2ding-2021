@@ -17,7 +17,7 @@ public class ModelCreator {
         this.parser = parser;
     }
 
-    public <T> T createObject(Class<T> objectClass, Map<String, String> csvValues){
+    public <T> T createObject(Class<T> objectClass, Map<String, String> csvValues) {
         T newObject;
         log.info("Try to create new object");
         try {
@@ -27,8 +27,8 @@ public class ModelCreator {
             Field[] objectFields = objectClass.getDeclaredFields();
 
 
-            for(Field field : objectFields){
-                if(field.isAnnotationPresent(Mapped.class)){
+            for (Field field : objectFields) {
+                if (field.isAnnotationPresent(Mapped.class)) {
                     field.setAccessible(true);
                     Mapped fieldAnnotation = field.getAnnotation(Mapped.class);
                     String annotationValue = csvValues.get(fieldAnnotation.value());

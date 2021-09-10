@@ -17,7 +17,7 @@ import java.sql.Date;
 import java.util.List;
 
 @Service
-public class DistributionService {
+public class DistributionService implements DistributionOperations {
 
     private final RegionRepository regionRepository;
     private final ResultRepository resultRepository;
@@ -33,17 +33,27 @@ public class DistributionService {
         this.dataTypeRepository = dataTypeRepository;
     }
 
-    public List<Region> getAllRegions(){
+    public List<Region> getAllRegions() {
         return regionRepository.findAll();
     }
 
     @Transactional(readOnly = true)
-    public Distribution getResults(Integer year, Long regionId, Long dataTypeId){
+    public List<DataType> getDataTypes() {
+        return dataTypeRepository.findAll();
+    }
+
+    @Transactional(readOnly = true)
+    public List<Region> getRegions() {
+        return regionRepository.findAll();
+    }
+
+    @Transactional(readOnly = true)
+    public Distribution getResults(Long year, Long regionId, Long dataTypeId) {
         Region region = regionRepository.getById(regionId);
         DataType dataType = dataTypeRepository.getById(dataTypeId);
-        Date start = Date.valueOf(year+"-01-01");
-        Date end = Date.valueOf(year+"-12-31");
-        List<Result> results = resultRepository.findByRegion_IdAndDateStartIsGreaterThanEqualAndDateStartIsLessThanEqualAndDataType_Id(regionId, start, end, dataTypeId)    ;
-        return new Distribution(new RegionDTO(region.getId(), region.getName()),new DataTypeDTO(dataType.getId(), dataType.getName()), ResultDTO.fromResults(results));
+        Date start = Date.valueOf(year + "-01-01");
+        Date end = Date.valueOf(year + "12-31");
+        List<Result> results = resultRepository.findByRegionAndDate(regionId, start, end, dataTypeId);
+        return new Distribution(new RegionDTO(region.getId(), region.getName()), new DataTypeDTO(dataType.getId(), dataType.getName(), dataType.getUnits()), ResultDTO.fromResults(results));
     }
 }

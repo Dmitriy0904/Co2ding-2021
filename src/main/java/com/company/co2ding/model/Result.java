@@ -1,7 +1,6 @@
 package com.company.co2ding.model;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.time.Instant;
 
 @Table(name = "results")
@@ -11,14 +10,14 @@ public class Result {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Date dateStart;
+    private Instant dateStart;
 
     private Double value;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private DataType dataType;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private Region region;
 
     public Long getId() {
@@ -29,11 +28,11 @@ public class Result {
         this.id = id;
     }
 
-    public Date getDateStart() {
+    public Instant getDateStart() {
         return dateStart;
     }
 
-    public void setDateStart(Date dateStart) {
+    public void setDateStart(Instant dateStart) {
         this.dateStart = dateStart;
     }
 
