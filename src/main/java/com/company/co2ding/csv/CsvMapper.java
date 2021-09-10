@@ -8,11 +8,11 @@ import java.util.*;
 
 @Component
 @Slf4j
-public class Mapper {
+public class CsvMapper {
     private final String csvPath = "co2.csv";
-    private final ModelCreator creator;
+    private final CsvModelCreator creator;
 
-    public Mapper(ModelCreator creator) {
+    public CsvMapper(CsvModelCreator creator) {
         this.creator = creator;
     }
 

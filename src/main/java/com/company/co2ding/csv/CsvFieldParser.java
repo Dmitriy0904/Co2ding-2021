@@ -7,7 +7,7 @@ import java.lang.reflect.Field;
 
 @Component
 @Slf4j
-public class FieldParser {
+public class CsvFieldParser {
 
     public <T> void parseField(T object, Field fieldToParse, String annotationValue){
         log.info("Starting to parse field {}", fieldToParse);

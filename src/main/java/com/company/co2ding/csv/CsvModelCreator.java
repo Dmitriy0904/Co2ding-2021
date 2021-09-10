@@ -9,11 +9,11 @@ import java.util.Map;
 
 @Component
 @Slf4j
-public class ModelCreator {
+public class CsvModelCreator {
 
-    private final FieldParser parser;
+    private final CsvFieldParser parser;
 
-    public ModelCreator(FieldParser parser) {
+    public CsvModelCreator(CsvFieldParser parser) {
         this.parser = parser;
     }
 
@@ -28,9 +28,9 @@ public class ModelCreator {
 
 
             for(Field field : objectFields){
-                if(field.isAnnotationPresent(Mapped.class)){
+                if(field.isAnnotationPresent(CsvMapped.class)){
                     field.setAccessible(true);
-                    Mapped fieldAnnotation = field.getAnnotation(Mapped.class);
+                    CsvMapped fieldAnnotation = field.getAnnotation(CsvMapped.class);
                     String annotationValue = csvValues.get(fieldAnnotation.value());
                     parser.parseField(newObject, field, annotationValue);
                 }
