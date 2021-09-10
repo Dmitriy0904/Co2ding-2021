@@ -1,81 +1,83 @@
 package com.company.co2ding.model;
 
+import com.company.co2ding.csv.Mapped;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name="generalInfo")
 public class Statistic {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    private Integer year;
+    @Mapped("year")
+    private int year;
 
+    @Mapped("month")
+    private int month;
+
+    @Mapped("region")
     private String region;
 
-    private Integer month;
+    @Mapped("co2, tons")
+    private double co2;
 
-    private Double co2;
-
-    private Double trees;
+    @Mapped("trees, pcs")
+    private double trees;
 
     public Statistic() {
     }
 
-    public Statistic(Integer year, String region, Integer month, Double co2, Double trees) {
+    public Statistic(int year, int month, String region, double co2, double trees) {
         this.year = year;
-        this.region = region;
         this.month = month;
+        this.region = region;
         this.co2 = co2;
         this.trees = trees;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Integer getYear() {
+    public int getYear() {
         return year;
     }
 
-    public void setYear(Integer year) {
-        this.year = year;
+    public int getMonth() {
+        return month;
     }
 
     public String getRegion() {
         return region;
     }
 
+    public double getCo2() {
+        return co2;
+    }
+
+    public double getTrees() {
+        return trees;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
     public void setRegion(String region) {
         this.region = region;
     }
 
-    public Integer getMonth() {
-        return month;
-    }
-
-    public void setMonth(Integer month) {
-        this.month = month;
-    }
-
-    public Double getCo2() {
-        return co2;
-    }
-
-    public void setCo2(Double co2) {
+    public void setCo2(double co2) {
         this.co2 = co2;
     }
 
-    public Double getTrees() {
-        return trees;
+    public void setTrees(double trees) {
+        this.trees = trees;
     }
 
-    public void setTrees(Double trees) {
-        this.trees = trees;
+    @Override
+    public String toString() {
+        return "Statistic{" +
+                "year=" + year +
+                ", month=" + month +
+                ", region='" + region + '\'' +
+                ", co2=" + co2 +
+                ", trees=" + trees +
+                '}';
     }
 }
