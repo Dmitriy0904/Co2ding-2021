@@ -11,5 +11,5 @@ public interface DistributionOperations {
 
     List<Region> getRegions();
 
-    Distribution getResults(Long year, Long regionId, Long dataTypeId);
+    Distribution getResults(Integer year, Long regionId, Long dataTypeId);
 }

@@ -3,11 +3,13 @@ package com.company.co2ding.dto;
 import com.company.co2ding.model.Result;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import java.time.Instant;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public record ResultDTO(@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd") Instant dateStart,
+public record ResultDTO(@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd") @Temporal(TemporalType.DATE) Date dateStart,
                         Double value) {
 
     public static List<ResultDTO> fromResults(List<Result> results) {

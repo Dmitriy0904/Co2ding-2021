@@ -2,6 +2,7 @@ package com.company.co2ding.model;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.Date;
 
 @Table(name = "results")
 @Entity
@@ -10,7 +11,7 @@ public class Result {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Instant dateStart;
+    private Date dateStart;
 
     private Double value;
 
@@ -28,11 +29,11 @@ public class Result {
         this.id = id;
     }
 
-    public Instant getDateStart() {
+    public Date getDateStart() {
         return dateStart;
     }
 
-    public void setDateStart(Instant dateStart) {
+    public void setDateStart(Date dateStart) {
         this.dateStart = dateStart;
     }
 
