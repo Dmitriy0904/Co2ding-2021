@@ -21,6 +21,19 @@ public class Result {
     @ManyToOne(fetch = FetchType.EAGER)
     private Region region;
 
+
+    public Result(){
+
+    }
+
+
+    public Result(Date dateStart, Double value, DataType dataType, Region region) {
+        this.dateStart = dateStart;
+        this.value = value;
+        this.dataType = dataType;
+        this.region = region;
+    }
+
     public Long getId() {
         return id;
     }

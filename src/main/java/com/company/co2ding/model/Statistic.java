@@ -1,22 +1,22 @@
 package com.company.co2ding.model;
 
-import com.company.co2ding.csv.Mapped;
+import com.company.co2ding.csv.CsvMapped;
 
 public class Statistic {
 
-    @Mapped("year")
+    @CsvMapped("year")
     private int year;
 
-    @Mapped("month")
+    @CsvMapped("month")
     private int month;
 
-    @Mapped("region")
+    @CsvMapped("region")
     private String region;
 
-    @Mapped("co2, tons")
+    @CsvMapped("co2, tons")
     private double co2;
 
-    @Mapped("trees, pcs")
+    @CsvMapped("trees, pcs")
     private double trees;
 
     public Statistic() {

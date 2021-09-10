@@ -14,6 +14,14 @@ public class Region {
 
     private String name;
 
+    public Region(){
+
+    }
+
+    public Region(String name) {
+        this.name = name;
+    }
+
     @OneToMany(mappedBy = "region")
     @JsonIgnore
     private List<Result> resuls;

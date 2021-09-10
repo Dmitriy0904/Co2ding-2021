@@ -19,6 +19,8 @@ public class Summary {
     @OneToMany
     private List<Result> results;
 
+
+
     public void setResults(List<Result> results) {
         this.results = results;
     }
