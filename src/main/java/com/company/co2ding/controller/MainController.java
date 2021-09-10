@@ -2,6 +2,7 @@ package com.company.co2ding.controller;
 
 import com.company.co2ding.Routes;
 import com.company.co2ding.service.db.DbOperations;
+import com.sun.istack.Interned;
 import com.company.co2ding.dto.DataTypeDTO;
 import com.company.co2ding.dto.Distribution;
 import com.company.co2ding.dto.RegionDTO;
@@ -17,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping(Routes.DISTRIBUTION)
 public class MainController {
+
     private final DbOperations dbOperations;
     private final DistributionService distributionService;
 
@@ -24,6 +26,7 @@ public class MainController {
         this.dbOperations = dbOperations;
         this.distributionService = distributionService1;
     }
+
 
     @PostConstruct
     public void init(){
