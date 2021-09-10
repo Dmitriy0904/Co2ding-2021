@@ -27,13 +27,8 @@ public class CsvModelCreator {
             Field[] objectFields = objectClass.getDeclaredFields();
 
 
-<<<<<<< HEAD:src/main/java/com/company/co2ding/csv/CsvModelCreator.java
             for(Field field : objectFields){
                 if(field.isAnnotationPresent(CsvMapped.class)){
-=======
-            for (Field field : objectFields) {
-                if (field.isAnnotationPresent(Mapped.class)) {
->>>>>>> c1f7fa29e102e3470aa1117475b7bbfb8563748e:src/main/java/com/company/co2ding/csv/ModelCreator.java
                     field.setAccessible(true);
                     CsvMapped fieldAnnotation = field.getAnnotation(CsvMapped.class);
                     String annotationValue = csvValues.get(fieldAnnotation.value());

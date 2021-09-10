@@ -36,26 +36,6 @@ public class DistributionService implements DistributionOperations {
         this.dataTypeRepository = dataTypeRepository;
     }
 
-<<<<<<< HEAD
-
-    public List<Region> getAllRegions(){
-=======
-    public List<Region> getAllRegions() {
->>>>>>> c1f7fa29e102e3470aa1117475b7bbfb8563748e
-        return regionRepository.findAll();
-    }
-
-    @Transactional(readOnly = true)
-<<<<<<< HEAD
-    public Distribution getResults(Integer year, Long regionId, Long dataTypeId){
-        Region region = regionRepository.getById(regionId);
-        DataType dataType = dataTypeRepository.getById(dataTypeId);
-        Date start = Date.valueOf(year+"-01-01");
-        Date end = Date.valueOf(year+"-12-31");
-        List<Result> results = new ArrayList<>();
-//        List<Result> results = resultRepository.findByRegion_IdAndDateStartIsGreaterThanEqualAndDateStartIsLessThanEqualAndDataType_Id(regionId, start, end, dataTypeId)    ;
-        return new Distribution(new RegionDTO(region.getId(), region.getName()),new DataTypeDTO(dataType.getId(), dataType.getName()), ResultDTO.fromResults(results));
-=======
     public List<DataType> getDataTypes() {
         return dataTypeRepository.findAll();
     }
@@ -68,11 +48,10 @@ public class DistributionService implements DistributionOperations {
     @Transactional(readOnly = true)
     public Distribution getResults(Integer year, Long regionId, Long dataTypeId) {
         Region region = regionRepository.findById(regionId).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Region with id " + regionId + " does not exist."));
-        DataType dataType = dataTypeRepository.findById(dataTypeId).orElseThrow(()->new ResponseStatusException(HttpStatus.BAD_REQUEST, "Data type with id" + dataTypeId +" does not exist."));
+        DataType dataType = dataTypeRepository.findById(dataTypeId).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Data type with id" + dataTypeId + " does not exist."));
         Date start = Date.valueOf(year + "-01-01");
         Date end = Date.valueOf(year + "-12-31");
         List<Result> results = resultRepository.findByRegionAndDate(regionId, start, end, dataTypeId);
         return new Distribution(new RegionDTO(region.getId(), region.getName()), new DataTypeDTO(dataType.getId(), dataType.getName(), dataType.getUnits()), ResultDTO.fromResults(results));
->>>>>>> c1f7fa29e102e3470aa1117475b7bbfb8563748e
     }
 }
