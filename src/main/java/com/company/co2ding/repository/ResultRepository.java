@@ -12,4 +12,6 @@ import java.util.List;
 @Repository
 public interface ResultRepository extends JpaRepository<Result, Long> {
     List<Result> findByRegionAndDateStartIsGreaterThanEqualAndDateStartIsLessThanEqualAndDataType(Region region, Date start, Date end, DataType dataType);
+
+    List<Result> findByRegion_IdAndDateStartIsGreaterThanEqualAndDateStartIsLessThanEqualAndDataType_Id(Long regionId, Date start, Date end, Long dataTypeId);
 }

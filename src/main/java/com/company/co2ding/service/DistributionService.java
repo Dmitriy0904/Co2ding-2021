@@ -1,6 +1,8 @@
 package com.company.co2ding.service;
 
+import com.company.co2ding.dto.DataTypeDTO;
 import com.company.co2ding.dto.Distribution;
+import com.company.co2ding.dto.RegionDTO;
 import com.company.co2ding.dto.ResultDTO;
 import com.company.co2ding.model.DataType;
 import com.company.co2ding.model.Region;
@@ -38,7 +40,7 @@ public class DistributionService {
         DataType dataType = dataTypeRepository.getById(dataTypeId);
         Date start = Date.valueOf(year+"-01-01");
         Date end = Date.valueOf(year+"-12-31");
-        List<Result> results = resultRepository.findByRegionAndDateStartIsGreaterThanEqualAndDateStartIsLessThanEqualAndDataType(region, start, end, dataType);
-        return new Distribution(region,dataType, ResultDTO.fromResults(results));
+        List<Result> results = resultRepository.findByRegion_IdAndDateStartIsGreaterThanEqualAndDateStartIsLessThanEqualAndDataType_Id(regionId, start, end, dataTypeId)    ;
+        return new Distribution(new RegionDTO(region.getId(), region.getName()),new DataTypeDTO(dataType.getId(), dataType.getName()), ResultDTO.fromResults(results));
     }
 }
