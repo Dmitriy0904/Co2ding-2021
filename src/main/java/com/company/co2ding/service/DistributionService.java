@@ -17,14 +17,17 @@ import java.sql.Date;
 import java.util.List;
 
 @Service
-@Transactional
 public class DistributionService {
 
-    private RegionRepository regionRepository;
-    private ResultRepository resultRepository;
-    private DataTypeRepository dataTypeRepository;
+    private final RegionRepository regionRepository;
+    private final ResultRepository resultRepository;
+    private final DataTypeRepository dataTypeRepository;
 
-    public DistributionService(RegionRepository regionRepository, ResultRepository resultRepository, DataTypeRepository dataTypeRepository) {
+    public DistributionService(
+            RegionRepository regionRepository,
+            ResultRepository resultRepository,
+            DataTypeRepository dataTypeRepository
+    ) {
         this.regionRepository = regionRepository;
         this.resultRepository = resultRepository;
         this.dataTypeRepository = dataTypeRepository;
