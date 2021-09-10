@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Co2dingApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(Co2dingApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(Co2dingApplication.class, args);
+    }
 
 }

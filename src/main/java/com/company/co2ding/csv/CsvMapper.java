@@ -4,7 +4,10 @@ import com.company.co2ding.model.Statistic;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Component
 @Slf4j
@@ -16,7 +19,7 @@ public class CsvMapper {
         this.creator = creator;
     }
 
-    public List<Statistic> mapObjects(){
+    public List<Statistic> mapObjects() {
         Map<String, String> headerValue = new HashMap<>();
         List<Statistic> statistics = new ArrayList<>();
 
@@ -26,8 +29,8 @@ public class CsvMapper {
 
 
         log.info("Starting to create objects");
-        for(int i = 1; i < data.size(); i++){
-            for(int j = 0; j < data.get(0).length; j++){
+        for (int i = 1; i < data.size(); i++) {
+            for (int j = 0; j < data.get(0).length; j++) {
                 headerValue.put(data.get(0)[j], data.get(i)[j]);
             }
             Statistic student = creator.createObject(Statistic.class, headerValue);

@@ -1,8 +1,8 @@
 package com.company.co2ding.model;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.time.Instant;
+import java.util.Date;
 
 @Table(name = "results")
 @Entity
@@ -15,10 +15,10 @@ public class Result {
 
     private Double value;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private DataType dataType;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private Region region;
 
 
